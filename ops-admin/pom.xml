@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.yasinyt</groupId>
+	<artifactId>admin</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>admin</name>
+	<description>ops project for Spring Boot</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.0.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<druid.version>1.1.9</druid.version>
+		<oracle-jdbc.version>14</oracle-jdbc.version>
+		<commons-io.version>2.5</commons-io.version>
+		<mybatis-spring-boot-starter.version>1.3.1</mybatis-spring-boot-starter.version>
+		<mybatis-generator-maven-plugin.version>1.3.2</mybatis-generator-maven-plugin.version>
+		<pagehelper-spring-boot-starter.version>1.2.3</pagehelper-spring-boot-starter.version>
+		<commons-vfs2.version>2.2</commons-vfs2.version>
+		<fastjson.version>1.2.44</fastjson.version>
+		<motan.version>1.1.0</motan.version>
+	</properties>
+
+	<dependencies>
+		<!-- spring boot 集成依赖 ##### start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>jackson-databind</artifactId>
+					<groupId>com.fasterxml.jackson.core</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-amqp</artifactId> 
+			</dependency> -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- ORM框架依赖 **** start -->
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${mybatis-spring-boot-starter.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis.generator</groupId>
+			<artifactId>mybatis-generator-core</artifactId>
+			<version>${mybatis-generator-maven-plugin.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>${druid.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ojdbc</groupId>
+			<artifactId>ojdbc</artifactId>
+			<version>${oracle-jdbc.version}</version>
+		</dependency>
+		<!-- ORM框架依赖 **** end -->
+
+		<!-- 模板引擎框架依赖 **** start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.nekohtml</groupId>
+			<artifactId>nekohtml</artifactId>
+		</dependency>
+		<!-- 模板引擎框架依赖 **** end -->
+
+		<!-- redis缓存框架依赖 **** start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+		</dependency>
+		<!-- redis缓存框架依赖 **** end -->
+		<!-- spring boot 集成依赖 ##### end -->
+
+		<!-- 日志框架依赖 -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+
+		<!-- 序列化框架依赖 -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
+		<!-- 分页插件 -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>${pagehelper-spring-boot-starter.version}</version>
+		</dependency>
+
+		<!-- 第三方工具包依赖 ##### start -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-vfs2</artifactId>
+			<version>${commons-vfs2.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+		</dependency>
+		
+		<dependency>
+	  		<groupId>com.alibaba</groupId>
+	  		<artifactId>fastjson</artifactId>
+	  		<version>${fastjson.version}</version>
+	  	</dependency>
+
+		<!-- devtools -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId> 
+			<optional>true</optional>
+		</dependency>
+		
+		<!-- 第三方工具包依赖 ##### end -->
+
+		<!-- Rpc ####start -->
+		<dependency>
+			<groupId>com.weibo</groupId>
+			<artifactId>motan-core</artifactId>
+			<version>${motan.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.weibo</groupId>
+			<artifactId>motan-transport-netty</artifactId>
+			<version>${motan.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.weibo</groupId>
+			<artifactId>motan-springsupport</artifactId>
+			<version>${motan.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.weibo</groupId>
+			<artifactId>motan-registry-zookeeper</artifactId>
+			<version>${motan.version}</version>
+		</dependency>
+		<!-- Rpc ####end -->
+
+	</dependencies>
+
+	<!-- maven打包插件配置 -->
+	<build>
+		<!-- <finalName>${project.artifactId}</finalName> -->
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+		           <!--fork : 如果没有该项配置，devtools不会起作用，即应用不会restart -->
+		           <fork>true</fork>
+		        </configuration>
+			</plugin>
+			<plugin>
+				<!--Mybatis-generator插件,用于自动生成Mapper和POJO -->
+				<groupId>org.mybatis.generator</groupId>
+				<artifactId>mybatis-generator-maven-plugin</artifactId>
+				<version>${mybatis-generator-maven-plugin.version}</version>
+				<configuration>
+					<!--配置文件的位置 -->
+					<configurationFile>${basedir}/src/main/resources/mybatis-generator-config.xml</configurationFile>
+					<verbose>true</verbose>
+					<overwrite>true</overwrite>
+				</configuration>
+			</plugin>
+			<!-- 项目打包同时打包RPC的依赖的class文件的API接口打包成jar包-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>java</goal>
+						</goals>
+						<configuration>
+							<mainClass>com.yasinyt.admin.util.ClassUtil</mainClass>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source><!-- 源代码编译版本 -->
+					<target>${java.version}</target><!-- 目标平台编译版本 -->
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-war-plugin</artifactId> 
+				<configuration> <failOnMissingWebXml>fasle</failOnMissingWebXml> </configuration> 
+				</plugin> -->
+		</plugins>
+	</build>
+
+	<!-- 私有库特有jar包（检索-下载） 路径 -->
+	<!-- <repositories>
+		<repository>
+			<id>nexus</id>
+			<url></url>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>nexus-plugins</id>
+			<url></url>
+		</pluginRepository>
+	</pluginRepositories> -->
+
+
+
+</project>

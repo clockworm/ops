@@ -1,0 +1,183 @@
+@charset "utf-8";
+/**
+ * @Title: LarryMS
+ * @Date: 2017-11-15
+ * @Site: www.larryms.com
+ * @Author: Larry
+ * @QQ号：313492783
+ * @QQ群号码：290354531
+ * @Version:larryMS2.08
+ * @Last Modified time: 2017-11-15 09:00:00
+ */
+.layui-fluid{
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+}
+.larry-title{
+	border-bottom: 1px solid #e5e5e5;
+	box-shadow: 0 2px 4px #B9B9B9;
+	font-size: 16px;
+	margin-bottom: 0px;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 1005;
+	padding-bottom: 10px;
+	padding-top: 12px;
+	line-height: 26px;
+}
+.larry-title .fr{
+	margin-right: 35px;
+}
+.layui-fluid .larry-menus{
+	position: absolute;
+	top: 55px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	z-index: 1000;
+}
+.layui-fluid .larry-menus .larryms-menus-aside{ 
+	width: 220px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	
+	border-right: 1px solid #e5e5e5;
+
+}
+.layui-fluid .larry-menus .larryms-menus-main{
+	position: absolute;
+	top:0px;
+	left: 220px;
+	bottom: 0px;
+	right: 0px;
+}
+
+.larry-tree-view{
+	margin:10px;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #E4EAEC;
+}
+.larry-tree-view h3{
+	display: block;
+	padding-left: 10px;
+	padding-bottom: 15px;
+	font-size: 16px;
+	line-height: 25px;
+	color: #333;
+}
+.larry-menus-add{
+	padding: 8px 20px;
+    margin-bottom: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: none;
+    border-radius: 0;
+    color:#767676;
+    cursor: pointer;
+}
+.larry-menus-add i{
+	display: inline-block;
+	vertical-align: middle;
+	height: 30px;
+	font-size: 20px;
+	line-height: 30px;
+	margin-top: 3px;
+}
+.larry-menus-add span{
+	display: inline-block;
+	vertical-align: middle;
+	height: 30px;
+	font-size: 16px;
+	line-height: 30px;
+}
+.larry-menus-add:hover{
+	background: #F3F7F9;
+	color: #01AAED;
+}
+.larry-menus-show{
+	display: block;
+	position: absolute;
+    top: 15px;
+    left: 15px;
+    bottom: 75px;
+    right: 15px;
+	border-bottom: 1px solid #e5e5e5;
+	overflow: hidden;
+}
+
+
+.larryms-menu-openA,.larryms-menu-openB{
+	overflow: visible !important;
+}
+
+.larryms-menu-openA .layui-layer-content{
+	overflow: visible !important;
+}
+.larryms-menu-openB .layui-layer-content{
+	overflow: visible !important;
+}
+.larry-menu-form{
+	margin:0px;
+	height: auto;
+	padding: 20px;
+	padding-bottom: 0px;
+	overflow-x: hidden;
+	overflow: visible !important;
+}
+
+.larryms-menus-icon{
+	position: relative;
+	overflow: visible !important;
+}
+.larryms-menus-icon label{
+	cursor: pointer;
+}
+.larryms-menus-icon label i{
+	font-size: 20px !important;
+	line-height: 24px;
+	text-align: center;
+	color: #FF5722;
+}
+.larry-icon-box{
+	display: none;
+	width: 100%;
+	height: 300px;
+    position: absolute;
+    top: 42px;
+    left: 0px;
+    background: #EFF6F9;
+    z-index: 19881116;
+    border: 1px solid #e5e5e5;
+    box-shadow: 3px 2px 20px #E7F6FD;
+}
+
+.larry-icon-box .layui-tab{
+	margin: 0px;
+	padding: 0px;
+}
+.larry-icon-box .layui-tab .layui-tab-content{
+	margin: 0px;
+	padding: 0px;
+}
+.larry-icon-box .layui-tab .layui-tab-content .layui-tab-item{
+	margin: 0px;
+	padding: 0px;
+}
+.larry-this{
+	display: block;
+}
+@media screen and (max-width: 768px){
+	.layui-fluid .larry-menus .larryms-menus-main{
+		left: 0px;
+	}
+}

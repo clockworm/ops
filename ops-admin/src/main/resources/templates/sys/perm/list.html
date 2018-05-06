@@ -1,0 +1,33 @@
+<head th:include="common/base :: header(larryMS模板（版本号：2.08-iframe）资源列表,资源列表,资源列表)"></head>
+<body class="larry-bg-gray">
+<link rel="stylesheet" type="text/css" href="/css/admin.css" media="all">
+<div class="layui-fluid">
+    <div class="larry-container larryms-admin">
+          <div class="layui-row layui-col-space20">
+          	    <div class="layui-col-xs12 layui-col-md9 layui-col-lg12">
+                    <section class="larry-panel">
+                   	    <div class="larryms-page-header">
+                   	    	<span class="tit">资源列表</span>
+                   	    </div>
+                   	    <div class="larryms-page-body">
+	                   	    <!-- <form id="search-form">
+							  <label class="layui-form-label" style="width: 50px;">角色名</label>
+							  <div class="layui-input-inline">
+							    <input class="layui-input" name="name" id="username" autocomplete="off">
+							  </div>
+							  <a id="search-btn" class="layui-btn"><i class="icon larry-icon larry-sousuo"></i> 查询</a>
+							</form> -->
+							<div id="resources-box"></div>
+                   	    </div>
+                    </section>
+          	    </div>
+          </div>
+    </div>
+</div>
+<!-- 加载js文件-->
+<i th:replace="common/plugins/treegrid :: treegrid"></i>
+<i th:replace="common/base :: basejs"></i>
+<script>layui.cache.page = 'mypanel';</script>
+<script type="text/javascript" src="/js/perm/list.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!-- head -->
+<head th:fragment="header(title,keywords,description)">
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+    <meta charset="UTF-8">
+	<title th:text="${title}">ops统一权限管理系统</title>
+	<meta name="keywords" th:content="${keywords}" />
+    <meta name="description" th:content="${description}" />
+    <meta name="renderer" content="webkit">	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">	
+	<meta name="Author" content="larry" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">	
+	<meta name="apple-mobile-web-app-capable" content="yes">	
+	<meta name="format-detection" content="telephone=no">
+	<script type="text/javascript">var root = window.location.protocol+'//'+window.location.host+'/';</script>
+	<link rel="stylesheet" type="text/css" href="/plugins/layui/css/layui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/common/css/animate.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/css/base.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/common/css/fonts/larry-icon.css" media="all">
+	</head>
+</head>
+<!-- copy -->
+<div th:fragment="copy" class="copy-right">© 2016-2017 Larry 版权所有  <a href="https://www.larrycms.com/" target="_blank">larrycms.com</a></div>
+
+<!-- basejs -->
+<script th:fragment="basejs" type="text/javascript" src="/plugins/plus/jquery-1.11.0.js"></script>
+<script th:fragment="basejs" type="text/javascript" src="/plugins/layui/layui.js"></script>
+<script th:fragment="basejs" type="text/javascript" src="/common/js/common.js"></script>
+<script th:fragment="basejs">
+layui.cache.rightMenu = false;//关闭右键菜单
+layui.config({version:"2.0.7", base:'/common/'})
+	.extend({larry:'js/base'}).use('larry');
+</script>
+</div>

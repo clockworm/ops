@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yasinyt.admin.dao.UserLoginInfoDao">
+  <resultMap id="BaseResultMap" type="com.yasinyt.admin.entity.UserLoginInfo">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="LOGIN_IP" jdbcType="VARCHAR" property="loginIp" />
+    <result column="SYSTEM_NAME" jdbcType="VARCHAR" property="systemName" />
+    <result column="LOGIN_TIME" jdbcType="TIMESTAMP" property="loginTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, USER_NAME, LOGIN_IP, SYSTEM_NAME, LOGIN_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from OPS_USER_LOGIN_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from OPS_USER_LOGIN_INFO
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yasinyt.admin.entity.UserLoginInfo">
+    insert into OPS_USER_LOGIN_INFO (ID, USER_ID, USER_NAME, 
+      LOGIN_IP, SYSTEM_NAME, LOGIN_TIME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{loginIp,jdbcType=VARCHAR}, #{systemName,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yasinyt.admin.entity.UserLoginInfo">
+    insert into OPS_USER_LOGIN_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="loginIp != null">
+        LOGIN_IP,
+      </if>
+      <if test="systemName != null">
+        SYSTEM_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null">
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="systemName != null">
+        #{systemName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yasinyt.admin.entity.UserLoginInfo">
+    update OPS_USER_LOGIN_INFO
+    <set>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginIp != null">
+        LOGIN_IP = #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="systemName != null">
+        SYSTEM_NAME = #{systemName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        LOGIN_TIME = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yasinyt.admin.entity.UserLoginInfo">
+    update OPS_USER_LOGIN_INFO
+    set USER_ID = #{userId,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      LOGIN_IP = #{loginIp,jdbcType=VARCHAR},
+      SYSTEM_NAME = #{systemName,jdbcType=VARCHAR},
+      LOGIN_TIME = #{loginTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

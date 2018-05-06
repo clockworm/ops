@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yasinyt.system.dao.MemberRealNameAuthDao">
+  <resultMap id="BaseResultMap" type="com.yasinyt.system.entity.MemberRealNameAuth">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="OPTIME" jdbcType="TIMESTAMP" property="optime" />
+    <result column="AUTH_ADMIN" jdbcType="VARCHAR" property="authAdmin" />
+    <result column="AUTH_STATUS" jdbcType="DECIMAL" property="authStatus" />
+    <result column="CARD_TYPE" jdbcType="VARCHAR" property="cardType" />
+    <result column="ID5_AUTH_TIME" jdbcType="TIMESTAMP" property="id5AuthTime" />
+    <result column="ID_CARD" jdbcType="VARCHAR" property="idCard" />
+    <result column="PHONE_AUTH_TIME" jdbcType="TIMESTAMP" property="phoneAuthTime" />
+    <result column="PHONE_NUMBER" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="REAL_NAME" jdbcType="VARCHAR" property="realName" />
+    <result column="REAL_NAME_AUTH_TIME" jdbcType="TIMESTAMP" property="realNameAuthTime" />
+    <result column="REALNAMEOBJ" jdbcType="VARCHAR" property="realnameobj" />
+    <result column="MEMBER_ID" jdbcType="VARCHAR" property="memberId" />
+    <result column="RWD_LICENSEISSUINGAGENCIES" jdbcType="VARCHAR" property="rwdLicenseissuingagencies" />
+    <result column="RWD_IDVALIDITY" jdbcType="TIMESTAMP" property="rwdIdvalidity" />
+    <result column="RWD_TEL" jdbcType="VARCHAR" property="rwdTel" />
+    <result column="BANK_CARD_NO" jdbcType="VARCHAR" property="bankCardNo" />
+    <result column="BANK_CODE" jdbcType="VARCHAR" property="bankCode" />
+    <result column="AUTH_RESULT_DESC" jdbcType="VARCHAR" property="authResultDesc" />
+    <result column="AUTH_RESULT_CODE" jdbcType="VARCHAR" property="authResultCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, OPTIME, AUTH_ADMIN, AUTH_STATUS, CARD_TYPE, ID5_AUTH_TIME, ID_CARD, PHONE_AUTH_TIME, 
+    PHONE_NUMBER, REAL_NAME, REAL_NAME_AUTH_TIME, REALNAMEOBJ, MEMBER_ID, RWD_LICENSEISSUINGAGENCIES, 
+    RWD_IDVALIDITY, RWD_TEL, BANK_CARD_NO, BANK_CODE, AUTH_RESULT_DESC, AUTH_RESULT_CODE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from P2P_MEMBER_REAL_NAME_AUTH
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from P2P_MEMBER_REAL_NAME_AUTH
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yasinyt.system.entity.MemberRealNameAuth">
+    insert into P2P_MEMBER_REAL_NAME_AUTH (ID, OPTIME, AUTH_ADMIN, 
+      AUTH_STATUS, CARD_TYPE, ID5_AUTH_TIME, 
+      ID_CARD, PHONE_AUTH_TIME, PHONE_NUMBER, 
+      REAL_NAME, REAL_NAME_AUTH_TIME, REALNAMEOBJ, 
+      MEMBER_ID, RWD_LICENSEISSUINGAGENCIES, RWD_IDVALIDITY, 
+      RWD_TEL, BANK_CARD_NO, BANK_CODE, 
+      AUTH_RESULT_DESC, AUTH_RESULT_CODE)
+    values (#{id,jdbcType=VARCHAR}, #{optime,jdbcType=TIMESTAMP}, #{authAdmin,jdbcType=VARCHAR}, 
+      #{authStatus,jdbcType=DECIMAL}, #{cardType,jdbcType=VARCHAR}, #{id5AuthTime,jdbcType=TIMESTAMP}, 
+      #{idCard,jdbcType=VARCHAR}, #{phoneAuthTime,jdbcType=TIMESTAMP}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{realNameAuthTime,jdbcType=TIMESTAMP}, #{realnameobj,jdbcType=VARCHAR}, 
+      #{memberId,jdbcType=VARCHAR}, #{rwdLicenseissuingagencies,jdbcType=VARCHAR}, #{rwdIdvalidity,jdbcType=TIMESTAMP}, 
+      #{rwdTel,jdbcType=VARCHAR}, #{bankCardNo,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}, 
+      #{authResultDesc,jdbcType=VARCHAR}, #{authResultCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yasinyt.system.entity.MemberRealNameAuth">
+    insert into P2P_MEMBER_REAL_NAME_AUTH
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="optime != null">
+        OPTIME,
+      </if>
+      <if test="authAdmin != null">
+        AUTH_ADMIN,
+      </if>
+      <if test="authStatus != null">
+        AUTH_STATUS,
+      </if>
+      <if test="cardType != null">
+        CARD_TYPE,
+      </if>
+      <if test="id5AuthTime != null">
+        ID5_AUTH_TIME,
+      </if>
+      <if test="idCard != null">
+        ID_CARD,
+      </if>
+      <if test="phoneAuthTime != null">
+        PHONE_AUTH_TIME,
+      </if>
+      <if test="phoneNumber != null">
+        PHONE_NUMBER,
+      </if>
+      <if test="realName != null">
+        REAL_NAME,
+      </if>
+      <if test="realNameAuthTime != null">
+        REAL_NAME_AUTH_TIME,
+      </if>
+      <if test="realnameobj != null">
+        REALNAMEOBJ,
+      </if>
+      <if test="memberId != null">
+        MEMBER_ID,
+      </if>
+      <if test="rwdLicenseissuingagencies != null">
+        RWD_LICENSEISSUINGAGENCIES,
+      </if>
+      <if test="rwdIdvalidity != null">
+        RWD_IDVALIDITY,
+      </if>
+      <if test="rwdTel != null">
+        RWD_TEL,
+      </if>
+      <if test="bankCardNo != null">
+        BANK_CARD_NO,
+      </if>
+      <if test="bankCode != null">
+        BANK_CODE,
+      </if>
+      <if test="authResultDesc != null">
+        AUTH_RESULT_DESC,
+      </if>
+      <if test="authResultCode != null">
+        AUTH_RESULT_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="optime != null">
+        #{optime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="authAdmin != null">
+        #{authAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="authStatus != null">
+        #{authStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="id5AuthTime != null">
+        #{id5AuthTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idCard != null">
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneAuthTime != null">
+        #{phoneAuthTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="realNameAuthTime != null">
+        #{realNameAuthTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="realnameobj != null">
+        #{realnameobj,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="rwdLicenseissuingagencies != null">
+        #{rwdLicenseissuingagencies,jdbcType=VARCHAR},
+      </if>
+      <if test="rwdIdvalidity != null">
+        #{rwdIdvalidity,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rwdTel != null">
+        #{rwdTel,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null">
+        #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="authResultDesc != null">
+        #{authResultDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="authResultCode != null">
+        #{authResultCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yasinyt.system.entity.MemberRealNameAuth">
+    update P2P_MEMBER_REAL_NAME_AUTH
+    <set>
+      <if test="optime != null">
+        OPTIME = #{optime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="authAdmin != null">
+        AUTH_ADMIN = #{authAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="authStatus != null">
+        AUTH_STATUS = #{authStatus,jdbcType=DECIMAL},
+      </if>
+      <if test="cardType != null">
+        CARD_TYPE = #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="id5AuthTime != null">
+        ID5_AUTH_TIME = #{id5AuthTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="idCard != null">
+        ID_CARD = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneAuthTime != null">
+        PHONE_AUTH_TIME = #{phoneAuthTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phoneNumber != null">
+        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null">
+        REAL_NAME = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="realNameAuthTime != null">
+        REAL_NAME_AUTH_TIME = #{realNameAuthTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="realnameobj != null">
+        REALNAMEOBJ = #{realnameobj,jdbcType=VARCHAR},
+      </if>
+      <if test="memberId != null">
+        MEMBER_ID = #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="rwdLicenseissuingagencies != null">
+        RWD_LICENSEISSUINGAGENCIES = #{rwdLicenseissuingagencies,jdbcType=VARCHAR},
+      </if>
+      <if test="rwdIdvalidity != null">
+        RWD_IDVALIDITY = #{rwdIdvalidity,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rwdTel != null">
+        RWD_TEL = #{rwdTel,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCardNo != null">
+        BANK_CARD_NO = #{bankCardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null">
+        BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="authResultDesc != null">
+        AUTH_RESULT_DESC = #{authResultDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="authResultCode != null">
+        AUTH_RESULT_CODE = #{authResultCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yasinyt.system.entity.MemberRealNameAuth">
+    update P2P_MEMBER_REAL_NAME_AUTH
+    set OPTIME = #{optime,jdbcType=TIMESTAMP},
+      AUTH_ADMIN = #{authAdmin,jdbcType=VARCHAR},
+      AUTH_STATUS = #{authStatus,jdbcType=DECIMAL},
+      CARD_TYPE = #{cardType,jdbcType=VARCHAR},
+      ID5_AUTH_TIME = #{id5AuthTime,jdbcType=TIMESTAMP},
+      ID_CARD = #{idCard,jdbcType=VARCHAR},
+      PHONE_AUTH_TIME = #{phoneAuthTime,jdbcType=TIMESTAMP},
+      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      REAL_NAME = #{realName,jdbcType=VARCHAR},
+      REAL_NAME_AUTH_TIME = #{realNameAuthTime,jdbcType=TIMESTAMP},
+      REALNAMEOBJ = #{realnameobj,jdbcType=VARCHAR},
+      MEMBER_ID = #{memberId,jdbcType=VARCHAR},
+      RWD_LICENSEISSUINGAGENCIES = #{rwdLicenseissuingagencies,jdbcType=VARCHAR},
+      RWD_IDVALIDITY = #{rwdIdvalidity,jdbcType=TIMESTAMP},
+      RWD_TEL = #{rwdTel,jdbcType=VARCHAR},
+      BANK_CARD_NO = #{bankCardNo,jdbcType=VARCHAR},
+      BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      AUTH_RESULT_DESC = #{authResultDesc,jdbcType=VARCHAR},
+      AUTH_RESULT_CODE = #{authResultCode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

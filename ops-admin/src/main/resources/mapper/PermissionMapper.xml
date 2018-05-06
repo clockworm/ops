@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yasinyt.admin.dao.PermissionDao">
+  <resultMap id="BaseResultMap" type="com.yasinyt.admin.entity.Permission">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="RESOURCE_TYPE" jdbcType="VARCHAR" property="resourceType" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="PERMISSION" jdbcType="VARCHAR" property="permission" />
+    <result column="PARENT_ID" jdbcType="VARCHAR" property="parentId" />
+    <result column="STATUS" jdbcType="DECIMAL" property="status" />
+    <result column="INSERT_TIME" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="ICON" jdbcType="VARCHAR" property="icon" />
+    <result column="SORT_FLAG" jdbcType="DECIMAL" property="sortFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NAME, RESOURCE_TYPE, URL, PERMISSION, PARENT_ID, STATUS, INSERT_TIME, 
+    UPDATE_TIME,ICON,SORT_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from OPS_PERMISSION
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 查询用户的菜单树 -->
+  <select id="findMenuByUser" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+    	<include refid="Base_Column_List" />
+    from OPS_PERMISSION
+    where ID in (SELECT rp.PERMISSION_ID FROM ops_user_role ur,ops_role_permission rp WHERE ur.role_id = rp.role_id AND ur.user_id =#{userId} GROUP BY  rp.PERMISSION_ID)
+    start with PARENT_ID IS NULL connect by prior id = PARENT_ID AND STATUS =1 ORDER SIBLINGS BY SORT_FLAG
+  </select>
+  <!-- 查询所有资源树 -->
+  <select id="findResources" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select 
+    	<include refid="Base_Column_List" />
+    from OPS_PERMISSION
+    start with PARENT_ID IS NULL connect by prior id = PARENT_ID ORDER SIBLINGS BY SORT_FLAG
+  </select>
+  
+   <select id="findAll" parameterType="com.yasinyt.admin.web.form.PermissionForm" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from OPS_PERMISSION
+   	<where>
+   		<if test="name != null">
+        AND  NAME LIKE '%'||#{name,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="resourceType != null">
+        AND  resource_type = #{resourceType,jdbcType=VARCHAR}
+      </if>
+       <if test="status != null">
+        AND STATUS = #{status,jdbcType=DECIMAL}
+      </if>
+   	</where>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from OPS_PERMISSION
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yasinyt.admin.entity.Permission">
+    insert into OPS_PERMISSION (ID, NAME, resource_type, 
+      URL, PERMISSION, parent_id, 
+      STATUS, INSERT_TIME, 
+      UPDATE_TIME,ICON,SORT_FLAG)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{resourceType,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, 
+      #{parentIds,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP},#{icon,jdbcType=VARCHAR},#{sortFlag,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yasinyt.admin.entity.Permission">
+    insert into OPS_PERMISSION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="resourceType != null">
+        resource_type,
+      </if>
+      <if test="url != null">
+        URL,
+      </if>
+      <if test="permission != null">
+        PERMISSION,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="insertTime != null">
+        INSERT_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="icon != null">
+        ICON,
+      </if>
+      <if test="sortFlag != null">
+        SORT_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceType != null">
+        #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentIds != null">
+        #{parentIds,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="sortFlag != null">
+        #{sortFlag,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yasinyt.admin.entity.Permission">
+    update OPS_PERMISSION
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceType != null">
+        RESOURCE_TYPE = #{resourceType,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        PERMISSION = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=DECIMAL},
+      </if>
+      <if test="insertTime != null">
+        INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="icon != null">
+        ICON = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sortFlag != null">
+        SORT_FLAG = #{sortFlag,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yasinyt.admin.entity.Permission">
+    update OPS_PERMISSION
+    set NAME = #{name,jdbcType=VARCHAR},
+      RESOURCE_TYPE = #{resourceType,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      PERMISSION = #{permission,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=DECIMAL},
+      INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      ICON = #{icon,jdbcType=VARCHAR},
+      SORT_FLAG = #{sortFlag,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

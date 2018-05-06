@@ -1,0 +1,106 @@
+.webuploader-container {
+	position: relative;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	background: #00b7ee;
+	padding: 10px 15px;
+	color: #fff;
+	text-align: center;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.webuploader-pick-hover {
+	background: #00a2d4;
+}
+
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
+.layui-progress-radius-fix,
+.layui-progress-radius-fix .layui-progress-bar{
+	border-radius:2px;
+}
+.layui-progress-text {
+    display: inline-block;
+}
+.faq-box{
+	padding: 10px;
+}
+.faq-box .layui-form-item{
+	border-bottom: none;
+}
+.layui-upload{
+    border: 3px dashed #e6e6e6;
+    padding: 5px;
+    margin-bottom: 15px;
+    background: #fff;
+}
+#imageList,#imageListAction{
+    margin: 0 100px;
+}
+#imageListAction{
+    float: right;
+}
+.layui-table .name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#layui-layer-photos{
+	padding: 0;
+}
+.layui-upload-list{
+	overflow-y: auto;
+    height: 220px;
+}
+.layui-upload-list th{
+	width: 20%;
+}
+.layui-upload-list tr,
+.layui-upload-list th{
+	text-align:center;
+}
+#picker{
+	width: 92px;
+	height: 38px;
+}
+#upload-box{
+	position:absolute;
+	margin-left:-10000px;
+}
+.btns{
+    position: relative;
+    margin: 10px 100px;
+}
+
+.upload-box .layui-btn{
+	margin:0 10px !important; 
+}
+
+.center-ps {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+#uploader .center-ps {
+    width: 50%;
+    margin-left: 25%;
+}
+
+.layui-layer-content.layui-layer-padding {
+    padding: 18px !important;
+    overflow: hidden;
+    text-align: center
+}

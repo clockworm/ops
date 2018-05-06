@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yasinyt.admin.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.yasinyt.admin.entity.User">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="NICK_NAME" jdbcType="VARCHAR" property="nickName" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="SALT" jdbcType="VARCHAR" property="salt" />
+    <result column="EMPLYEE_ID" jdbcType="VARCHAR" property="emplyeeId" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="HEAD" jdbcType="VARCHAR" property="head" />
+    <result column="INSERT_TIME" jdbcType="TIMESTAMP" property="insertTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NICK_NAME, USER_NAME, PASSWORD, SALT, EMPLYEE_ID, STATUS, HEAD, INSERT_TIME, 
+    UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from OPS_USER
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="findAll" parameterType="com.yasinyt.admin.web.form.UserForm" resultMap="BaseResultMap">
+  	select 
+    	<include refid="Base_Column_List" />
+    from OPS_USER
+    <where>
+      <if test="username != null">
+        AND USER_NAME LIKE '%'||#{username,jdbcType=VARCHAR}||'%'
+      </if>
+      <if test="status != null">
+        AND STATUS = #{status,jdbcType=INTEGER}
+      </if>
+    </where>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from OPS_USER
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.yasinyt.admin.entity.User">
+    insert into OPS_USER (ID, NICK_NAME, USER_NAME, 
+      PASSWORD, SALT, EMPLYEE_ID, 
+      STATUS, HEAD, INSERT_TIME, 
+      UPDATE_TIME)
+    values (#{id,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{emplyeeId,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{head,jdbcType=VARCHAR}, #{insertTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yasinyt.admin.entity.User">
+    insert into OPS_USER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="nickName != null">
+        NICK_NAME,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="salt != null">
+        SALT,
+      </if>
+      <if test="emplyeeId != null">
+        EMPLYEE_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="head != null">
+        HEAD,
+      </if>
+      <if test="insertTime != null">
+        INSERT_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="emplyeeId != null">
+        #{emplyeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="head != null">
+        #{head,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yasinyt.admin.entity.User">
+    update OPS_USER
+    <set>
+      <if test="nickName != null">
+        NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        SALT = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="emplyeeId != null">
+        EMPLYEE_ID = #{emplyeeId,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="head != null">
+        HEAD = #{head,jdbcType=VARCHAR},
+      </if>
+      <if test="insertTime != null">
+        INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yasinyt.admin.entity.User">
+    update OPS_USER
+    set NICK_NAME = #{nickName,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      SALT = #{salt,jdbcType=VARCHAR},
+      EMPLYEE_ID = #{emplyeeId,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      HEAD = #{head,jdbcType=VARCHAR},
+      INSERT_TIME = #{insertTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

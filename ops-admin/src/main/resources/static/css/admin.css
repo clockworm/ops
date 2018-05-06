@@ -1,0 +1,56 @@
+@charset "utf-8";
+/**
+ * @Title: LarryMS
+ * @Date: 2017-11-15
+ * @Site: www.larryms.com
+ * @Author: Larry
+ * @QQ号：313492783
+ * @QQ群号码：290354531
+ * @Version:larryMS2.08
+ * @Last Modified time: 2017-11-15 09:00:00
+ */
+.admin-info{padding:50px 20px 35px 20px;}
+.admin-info .photo{display:block;width:130px;height:130px;margin:0 auto;border-radius:50%;}
+.admin-info .photo img{display:block;width:100%;height:100%;border:none;border-radius:50%;}
+.larryms-user{display:block;width:100%;height:30px;line-height:30px;text-align:center;padding-top:15px;color:#333;font-size:16px;}
+.login-time{display:block;width:100%;height:30px;line-height:30px;text-align:center;font-size:14px;color:#666777;}
+.admin-log{background:#F6F9FD;padding:15px 20px 15px 20px;}
+.admin-log .larryms-con{padding-top:0px;}
+.admin-log .larryms-con .larry-layer em.larryms-stat-count{display:block;width:100%;height:20px;font-size:18px;line-height:20px;color:#666;font-weight:normal;text-align:center;}
+.admin-log .larryms-con .larry-layer span{display:block;width:100%;font-size:14px;color:#A3AFB7;text-align:center;}
+.larryms-admin .larryms-page-header{display:block;margin:0px 20px;border-bottom:1px solid #e5e5e5;padding:20px 0px 5px 0px;}
+.larryms-admin .larryms-page-header span.tit{line-height:30px;font-size:16px;color:#666666;font-weight:300;}
+.larryms-admin .larryms-page-body{margin:0px 20px;padding:20px 0px;}
+.larryms-admin .larryms-page-body form{display:block;width:90%;}
+.layui-form .layui-form-item label.layui-form-label{width:110px;font-family:"Microsoft YaHei";}
+.layui-input-block{margin-left:150px;width:auto;}
+.layui-disabled{background:#EEEEEE;color:#595963!important;}
+.layui-disabled:hover{color:#595963!important;}
+.layui-input-block textarea{height:90px;}
+.larry-code{display:inline-block;vertical-align:top;margin-right:5px;width:40%;}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{color:#666;}
+input:-moz-placeholder,
+textarea:-moz-placeholder{color:#666;}
+input::-moz-placeholder,
+textarea::-moz-placeholder{color:#666;}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder{color:#666;}
+.larry-password::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{color:#CCCCCC;}
+.larry-password::-moz-placeholder,
+textarea:-moz-placeholder{color:#CCCCCC;}
+.larry-password::-moz-placeholder,
+textarea::-moz-placeholder{color:#CCCCCC;}
+.larry-password::-ms-input-placeholder,
+textarea:-ms-input-placeholder{color:#CCCCCC;}
+
+
+
+
+/*响应式适配*/
+@media screen and (max-width:768px){
+  .larryms-admin .larryms-page-body form{width:100%;}
+  .larryms-admin .larryms-page-body form label.layui-form-label{width:90px;}
+  .layui-input-block{margin-left:120px;}
+}

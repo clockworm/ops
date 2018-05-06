@@ -1,0 +1,268 @@
+<head th:include="common/base :: header(larryMS模板（版本号：2.08-iframe）后台首页,larryMS后台首页,larryMS后台首页)"></head>
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<body class="larry-bg-gray">
+<div class="layui-fluid">
+	<div class="larry-container animated fadeIn">
+        <div class="layui-row layui-col-space15" id="Minfo">
+        	<div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+        		 <div class="head-info larry-font-theme layui-bg-green">
+        		 	<div>larry <span id="weather"></span></div>
+        		 	<i class="larry-icon larry-guanbi1" id="closeInfo"></i>
+        		 </div>
+        	</div>
+        </div>
+        <!-- 快捷导航 -->
+        <div class="layui-row larry-shortcut layui-col-space15" id="shortcut">
+        	<div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut larry-ico-rotate">
+                    <a class="pos-r" data-url='html/main.html' data-icon="larry-neirongguanli1">
+                        <div class="larry-ico larry-bg-blue"><i class="larry-icon larry-neirongguanli1"></i></div>
+                        <div class="larry-value">
+                            <span class="nums">100</span>
+                            <cite>待审核文章</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a class="pos-r" data-url='html/main.html' data-icon="larry-huiyuanguanli">
+                        <div class="larry-ico larry-bg-red"><i class="larry-icon larry-huiyuanguanli"></i></div>
+                        <div class="larry-value">
+                            <span class="nums">50</span>
+                            <cite>新增会员数</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a class="pos-r" data-url='html/main.html' data-icon="larry-neirongfabu">
+                        <div class="larry-ico larry-bg-purple"><i class="larry-icon larry-neirongfabu"></i></div>
+                        <div class="larry-value">
+                            <span class="nums">100</span>
+                            <cite>待审会员贴</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a class="pos-r" data-url='html/main.html' data-icon="larry-zhanghuxinxi">
+                        <div class="larry-ico larry-bg-two"><i class="larry-icon larry-zhanghuxinxi"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">系统更新日志</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a class="pos-r" data-url='html/persons.html' data-icon="larry-wsmp-setting">
+                        <div class="larry-ico larry-bg-orange"><i class="larry-icon larry-wsmp-setting"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">系统基本设置</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+            <div class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg2 larry-col">
+                <section class="shortcut pos-r larry-ico-rotate">
+                    <a class="pos-r" data-url='html/menus.html' data-icon="larry-caidanguanli3"  data-id="larry-1006" data-group="0">
+                        <div class="larry-ico larry-bg-green"><i class="larry-icon larry-caidanguanli3"></i></div>
+                        <div class="larry-value">
+                            <cite class="un-nums">菜单管理</cite>
+                        </div>
+                    </a>
+                </section>
+            </div>
+        </div>
+        <!-- 面板 -->
+        <div class="layui-row layui-col-space15">
+            <!-- 更新检查 -->
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md6 layui-col-lg6">
+                 <section class="larry-panel">
+                    <div class="larry-panel-header">
+                        <h3 class="larry-panel-title">版本信息 <a href="http://www.larryms.com/" target="_blank"><em>[</em><span id="versionT"></span><em>]</em></a></h3>
+                        <i class="larry-icon larry-unfold1 tools"></i>
+                    </div>
+                    <div class="larry-panel-body">
+                        <div class="update">
+                            <div class="larryms">
+                                <span class="logo larry-bg-green">LarryMS</span>
+                                <div class="larryms-text"><cite>您系统版本最后更新时间为：2017-12-25</cite></div>
+                                <div class="larryms-update">
+                                    <span class="layui-btn  layui-btn-xs layui-bg-red">进行在线更新</span>
+                                    <span class="layui-btn  layui-btn-xs ">系统错误修复</span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="layui-timeline larryms-update-info" id="update-log">
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis">&#xe756;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">LarryMS2.15计划更新中...</h3>
+                                </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis">&#xe617;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title larry-cur-tit">2018年1月16日 LarryMS2.07 Beta1发布</h3>
+                                </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">2017年9月20日 LarryMS2.02发布</h3>
+                                </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis larry-cur-red">&#xe617;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">2017年8月31日 LarryMS2.0.0发布(正式立项)</h3>
+                                </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">2017年5月30日 LarryCMS_1.09(开源版)发布</h3>
+                                </div>
+                            </li>
+                            <li class="layui-timeline-item">
+                                <i class="layui-icon layui-timeline-axis larry-cur-red">&#xe63f;</i>
+                                <div class="layui-timeline-content layui-text">
+                                    <h3 class="layui-timeline-title">2016年12月20日 LarryCMS(开源版)在Layui案例中提交</h3>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <!-- larryMS系统概览 -->
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md6 layui-col-lg6">
+                <section class="larry-panel">
+                    <div class="larry-panel-header">
+                        <h3 class="larry-panel-title">系统概览</h3>
+                        <i class="larry-icon larry-unfold1 tools"></i>
+                    </div>
+                    <div class="larry-panel-body">
+                         <table class="layui-table larry-table-info">
+                             <colgroup>
+                                 <col width="150">
+                                 <col>
+                             </colgroup>
+                             <tbody>
+                                 <tr>
+                                    <td><span class="tit">系统名称:</span></td>
+                                    <td><span class="info">LarryMS</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="tit">版本信息:</span></td>
+                                    <td><span class="info iframe"> LarryMS v2.08 ( iframe版 )</span></td>
+                                </tr>
+                                 <tr>
+                                     <td><span class="tit">服务器环境:</span></td>
+                                     <td>Linux/Centos7.3</td>
+                                 </tr>
+                                 <tr>
+                                     <td><span class="tit">数据库版本:</span></td>
+                                     <td>5.7.19</td>
+                                 </tr>
+                                 <tr>
+                                     <td><span class="tit">最大上传限制:</span></td>
+                                     <td>8M</td>
+                                 </tr>
+                                 <tr>
+                                     <td><span class="tit">当前用户权限:</span></td>
+                                     <td>超级管理员</td>
+                                 </tr>
+                                 <tr>
+                                    <td><span class="tit">开发作者:</span></td>
+                                    <td>Larry （ QQ:313492783 ）</td>
+                                 </tr>
+                             </tbody>
+                         </table>
+                    </div>
+                </section>
+            </div>
+            <!-- 升级购买 -->
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg-12">
+                <section class="larryms-buy larry-bg-white larry-panel">
+                    <div class="larry-panel-header">
+                        <h3 class="larry-panel-title">LarryMS/LarryCMS获取授权流程</h3>
+                        <i class="larry-icon larry-guanbi1 close"></i>
+                    </div>
+                    <div class="larry-panel-body">
+                        <div class="buy-content clearfix">
+                            <div class="layui-col-xs-12 layui-col-sm6 layui-col-md3 layui-col-lg3 buy-step step1">
+                                <div class="em nums">1</div>
+                                <div class="text">
+                                    <cite>购买</cite>
+                                    <span class="explain">选择您需要购买的产品及服务</span>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs-12 layui-col-sm6 layui-col-md3 layui-col-lg3 buy-step step2">
+                                <div class="em nums">2</div>
+                                <div class="text">
+                                    <cite>付款</cite>
+                                    <span class="explain">官网在线支付费用</span>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs-12 layui-col-sm6 layui-col-md3 layui-col-lg3 buy-step step3 larry-bg-green">
+                                <div class="em nums">3</div>
+                                <div class="text">
+                                    <cite>完成</cite>
+                                    <span class="explain">下载源码、索取发票</span>
+                                </div>
+                            </div>
+                            <div class="layui-col-xs-12 layui-col-sm6 layui-col-md3 layui-col-lg3 buy-step step4">
+                                <div class="em nums">4</div>
+                                <div class="text">
+                                    <cite>售后</cite>
+                                    <span class="explain">在线反馈、售后服务、加群交流</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- 网站数据统计 -->
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md6 layui-col-lg6">
+                <section class="larry-panel">
+                    <div class="larry-panel-header">
+                        <h3 class="larry-panel-title">数据概览</h3>
+                        <i class="larry-icon larry-unfold1 tools"></i>
+                    </div>
+                    <div class="larry-panel-body">
+                        <div class="count-data" id="larryCount">
+                            
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- 信息统计 -->
+            <div class="layui-col-xs12 layui-col-sm12 layui-col-md6 layui-col-lg6">
+                <section class="larry-panel">
+                    <div class="larry-panel-header">
+                        <h3 class="larry-panel-title">信息统计</h3>
+                        <i class="larry-icon larry-unfold1 tools"></i>
+                    </div>
+                    <div class="larry-panel-body">
+                        
+                    </div>
+                </section>
+            </div>
+
+        </div>
+        <!-- 升级购买 -->
+        <div class="layui-row layui-col-space15">
+        </div>
+	</div>
+</div>
+<!-- 加载js文件-->
+<i th:replace="common/base :: basejs"></i>
+<script type="text/javascript">
+layui.cache.page = 'main'; 
+</script>
+</body>
+</html>

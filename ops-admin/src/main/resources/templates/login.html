@@ -1,0 +1,48 @@
+<head th:include="common/base :: header(OPS统一权限管理系统,登录页,登录页)"></head>
+<link rel="stylesheet" type="text/css" href="/css/login.css" media="all">
+<body>
+<div class="layui-fluid">
+	<div class="layui-row larryms-layout">
+		<div class="layui-col-lg6  layui-col-md6 layui-col-sm10 layui-col-xs11 larry-main animated shake larry-delay2">
+             <div class="title">OPS统一权限管理系统</div>
+             <p class="info">后台登录中心</p>
+             <div class="user-info">
+             	  <div class="avatar"><img src="/common/images/photo/admin.png" alt=""></div>
+             	  <div class="layui-form" id="larry_form">
+                        <div class="layui-form-item" id="username">
+			 	             <label class="layui-form-label">用户名:</label>
+			 	             <input type="text" name="username" lay-verify="required" autocomplete="off" class="layui-input larry-input" placeholder="请输入您的用户名">
+			            </div>
+			            <div class="layui-form-item" id="password">
+			 	             <label class="layui-form-label">密　码:</label>
+			 	             <input type="password" name="password" required lay-verify="required|password" autocomplete="off" class="layui-input larry-input" placeholder="请输入您的登录密码">
+			            </div>
+			            <div class="layui-form-item larry-verfiy-code" id="larry_code">
+			 	             <input type="text" name="code" lay-verfy="" autocomplete="off" class="layui-input larry-input" placeholder="输入验证码">
+			 	             <div class="code">
+			 	   	             <div class="arrow"></div>
+			 	   	             <div class="code-img"><img src="getYzm" alt="" id="codeimage"></div>
+			 	   	             <a id="change" class="change " title="看不清,点击更换验证码"><i></i></a>
+			 	             </div>
+			            </div>
+			            <div class="layui-form-item">
+			 	            <button id="login-btn" class="layui-btn larry-btn" lay-filter="submit" lay-submit>立即登录</button>
+			            </div>
+             	  </div>
+             </div>
+             <div th:replace="common/base :: copy"></div>
+		</div>
+	</div>
+</div>
+<!-- 加载js文件-->
+<i th:replace="common/base :: basejs"></i>
+
+<script>
+    if(window != top){
+        sessionStorage.clear();
+        top.location.href = location.href;
+    }
+    layui.cache.page = 'login';
+</script>
+</body>
+</html>

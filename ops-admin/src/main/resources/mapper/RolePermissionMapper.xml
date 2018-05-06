@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yasinyt.admin.dao.RolePermissionDao">
+	<!-- 批量增加用户角色权限 -->
+  	<insert id="roleAddPermissionBinds" parameterType="java.lang.String">
+		 INSERT INTO OPS_ROLE_PERMISSION(ROLE_ID,PERMISSION_ID)
+		 <foreach collection="permissionIds" item="permissionId" open="("  close=")" separator="union all">
+		  	 SELECT #{roleId,jdbcType=VARCHAR},#{permissionId,jdbcType=VARCHAR} FROM DUAL
+		  </foreach>  	
+  	</insert>
+  	
+  	<!-- 批量查询角色的资源 -->
+  	<select id="findPermissionsByRoles" parameterType="java.lang.String" resultType="com.yasinyt.admin.entity.Permission">
+  		select p.* from ops_permission p,ops_role_permission rp where p.id = rp.permission_id 
+		and rp.role_id in 
+		 <foreach collection="roleIds" item="roleId" open="(" close=")" separator=",">
+		 	#{roleId}
+		 </foreach>
+		<if test='status!=null'> 
+			and p.status = #{status} 
+		</if>
+  	</select>
+</mapper>

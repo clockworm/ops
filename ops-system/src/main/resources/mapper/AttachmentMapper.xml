@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yasinyt.system.dao.AttachmentDao">
+	<resultMap id="BaseResultMap" type="com.yasinyt.system.entity.Attachment">
+		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="FILE_NAME" jdbcType="VARCHAR" property="fileName" />
+		<result column="FILE_TYPE" jdbcType="VARCHAR" property="fileType" />
+		<result column="FILE_PATH" jdbcType="VARCHAR" property="filePath" />
+		<result column="FILE_SIZE" jdbcType="INTEGER" property="fileSize" />
+		<result column="UPLOAD_TIME" jdbcType="TIMESTAMP" property="uploadTime" />
+		<result column="UPLOADER" jdbcType="VARCHAR" property="uploader" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+	</resultMap>
+	<!-- 批量增加用户角色权限 -->
+	<insert id="insertBatch" parameterType="java.util.List">
+		INSERT INTO
+		ATTACHMENT(ID,FILE_NAME,FILE_SIZE,FILE_TYPE,FILE_PATH,UPLOAD_TIME,UPLOADER,REMARK)
+		<foreach collection="list" item="attachment" open="(" close=")"
+			separator="union all">
+			SELECT
+			#{attachment.id,jdbcType=VARCHAR},#{attachment.fileName,jdbcType=VARCHAR},
+			#{attachment.fileSize,jdbcType=DECIMAL},#{attachment.fileType,jdbcType=VARCHAR},
+			#{attachment.filePath,jdbcType=VARCHAR},#{attachment.uploadTime,jdbcType=TIMESTAMP},
+			#{attachment.uploader,jdbcType=VARCHAR},#{attachment.remark,jdbcType=VARCHAR}
+			FROM DUAL
+		</foreach>
+	</insert>
+</mapper>
